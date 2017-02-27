@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>污染城市列表</h3>
+    <ul id="aqi-list">
+    </ul>
+    <script type="text/javascript">
+    var aqiData = [
+        ["北京", 90],
+        ["上海", 50],
+        ["福州", 10],
+        ["广州", 30],
+        ["成都", 90],
+        ["西安", 100]
+    ];
+    // 定义排名数组
+    var Num = [
+        ["第一名:"],
+        ["第二名:"],
+        ["第三名:"],
+        ["第四名:"],
+        ["第五名:"],
+        ["第六名:"]
+    ];
+    // 对现有数组进行降序排列
+    function sortNum(a, b) {
+        return b[1] - a[1]
+    }
+    aqiData.sort(sortNum);
+    // 添加li
+    for (i = 0; i < aqiData.length; i++) {
+        if (aqiData[i][1] >= 60) {
+            var node = document.createElement("li"); //添加li
+            node.innerHTML = Num[i] + aqiData[i]; //添加li内的元素
+            document.getElementById("aqi-list").appendChild(node); //将li添加到ul节点后
+        }
+    }
+    </script>
+</body>
+
+</html>
